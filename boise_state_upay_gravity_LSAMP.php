@@ -25,18 +25,14 @@ Author: David Lentz, David Ferro
 		// CHANGE: the name of the element in the $_GET array will changed depending on 
 		// how the GravityForm was created. Look there for the correct field ID and change
 		// here as necessary.
-		$amt = $_GET["input_1"];		
+		$amt = 0;
+		if ($_GET['input_15']=='checked'){
+			$amt += 200;
+		}
+		if ($_GET['input_9']=='checked'){
+                        $amt += 20;
+                }
 
-		// An example of some amount calculation that was done in a past instance:
-		/*
-		$totalPayment=0;
-		if ($_GET['ACN']=='checked'){
-			$totalPayment+=20;
-		}
-		if ($_GET['CC']=='checked'){
-			$totalPayment+=200;
-		}
-		*/
 
 		$EXT_TRANS_ID = createEXT_TRANS_ID();
 		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
