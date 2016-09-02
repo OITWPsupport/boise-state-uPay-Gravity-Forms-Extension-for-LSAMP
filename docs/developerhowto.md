@@ -1,10 +1,24 @@
+Overview
+
+Touchnet uPay is the service designated by the university for ecommerce. Any WordPress sites that require ecommerce need to integrate with Touchnet. OIT has created a plugin template so that each site requiring ecommerce can use a custom-built plugin configured and supported by OIT.
+
+GravityForms is the product OIT provides to all site admins to easily create web forms. These forms live in subsites on secureforms.boisestate.edu. To allow university departments to implement ecommerce in their WordPress sites, we combine WordPress, GravityForms and OIT's Touchnet plugin template.
+
+Purpose
+
+This document describes the process for creating a plugin based on OIT's Touchnet plugin template.
+
 1. Configure the GravityForm
-	- Form Settings->Confirmations. 
-		- Confirmation Type = Redirect.
-		- Redirect URL = the URL of the Forwarding Page created by the Site Admin.
-		- Redirect Query String: Click the drop-down icon at the top right of this textarea to view the form fields available. By selecting fields here, 
+The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. Working with the Site Admin, we need to create a web form that allows the user to initiate the transaction (selecting items, for example). That form will submit to a Forwarding Page we'll create to route the user to Touchnet, posting information about the transaction and amount owed.
+
+	1. Create the form
+	1. Configure the form to submit to the Forwarding Page:
+		- Form Settings->Confirmations. 
+			- Confirmation Type = Redirect.
+			- Redirect URL = the URL of the Forwarding Page created by the Site Admin.
+			- Redirect Query String: Click the drop-down icon at the top right of this textarea to view the form fields available. By selecting fields here, 
 compose a query string in the format "key1={value1}&key2={value2}..." You'll provide the key names and the formatting (ampersands and equals sign).
-	- Save Confirmation.  
+		- Save Confirmation.  
 1. Create a new version of the Gravity Forms Extension plugin.
 	- See [Deploying Custom Plugins](https://sites.google.com/a/boisestate.edu/wordpress-support/home/boise-state-custom-plugins/deploying-custom-plugins)
 	- Update the class name in updater.php to assure that it's unique. All our plugins will use this class, and WP will throw an error if the 
