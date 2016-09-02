@@ -26,13 +26,12 @@ Author: David Lentz, David Ferro
 		// how the GravityForm was created. Look there for the correct field ID and change
 		// here as necessary.
 		$amt = 0;
-		if ($_GET['input_15']=='checked'){
+		if ($_GET['CC']=='checked'){
 			$amt += 200;
 		}
-		if ($_GET['input_9']=='checked'){
-                        $amt += 20;
-                }
-
+		if ($_GET['ACN']=='checked'){
+			$amt += 20;
+		}
 
 		$EXT_TRANS_ID = createEXT_TRANS_ID();
 		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
