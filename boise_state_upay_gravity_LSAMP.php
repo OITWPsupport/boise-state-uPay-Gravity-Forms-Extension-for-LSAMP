@@ -6,6 +6,17 @@ Version: 2.0.0
 Author: David Lentz, David Ferro
 */
 
+defined( 'ABSPATH' ) or die( 'No hackers' );
+
+if( ! class_exists( 'Boise_State_uPay_GF_LSAMP_Updater' ) ){
+	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
+}
+
+$updater = new Boise_State_uPay_GF_LSAMP_Updater( __FILE__ );
+$updater->set_username( 'OITWPsupport' );
+$updater->set_repository( 'boise-state-uPay-Gravity-Forms-Extension-for-LSAMP' );
+$updater->initialize();
+
 	// This is triggered when the shortcode 'UPAYFORM' is added to a page in WordPress.
 	// Writes a form full of hidden fields and auto-submits it (via javascript).
 	// If javascript isn't available, displays the form in the browser with a submit 
