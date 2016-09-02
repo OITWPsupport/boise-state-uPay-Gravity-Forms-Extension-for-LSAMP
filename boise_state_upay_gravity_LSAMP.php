@@ -21,7 +21,7 @@ $updater->initialize();
 	// Writes a form full of hidden fields and auto-submits it (via javascript).
 	// If javascript isn't available, displays the form in the browser with a submit 
 	// button so the user can click to continue.
-	function createForm( $atts ) {
+	function createForm_LSAMP( $atts ) {
 	
 		// Parse the parameters sent in the shortcode (if any). Allows us to set values 
 		// in WordPress rather than here in the code.
@@ -65,8 +65,8 @@ $updater->initialize();
 	}
 	
 	// This makes the shortcode available to WP users. When they put that string on a page, 
-	// the form defined in createForm() appears there.
-	add_shortcode('UPAYFORM', 'createForm');
+	// the form defined in createForm_LSAMP() appears there.
+	add_shortcode('UPAYFORM', 'createForm_LSAMP');
 
 	// Creates a transaction ID for use by upay. We'll store this value on our side AND 
 	// post it to uPay.
