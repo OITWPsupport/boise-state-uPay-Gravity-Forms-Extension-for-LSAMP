@@ -16,6 +16,7 @@ This procedure presumes that you have knowledge of WordPress, Gravity Forms, PHP
 ##1. Create a new version of the OIT Touchnet plugin
 Base your plugin on any existing OIT Touchnet plugin. (See [OITWPsupport @ GitHub](https://github.com/OITWPsupport).) You'll need to update some parts of the code to assure that this plugin is unique. (WordPress will throw an error if 2 plugins use the same class names or shortcodes, for example.)
 
+1. Download the source code of an OIT Touchnet plugin from [OITWPsupport @ GitHub](https://github.com/OITWPsupport)
 1. Copy the files into a new GitHub repository.
 2. Update the class name in updater.php to assure that it's unique:  
 `class Boise_State_[plugin_name]_Updater {`
@@ -46,18 +47,16 @@ The Forwarding Page will use the plugin you created above to send the user and t
 	- Passed Amount Validation Key
 		- **Shortcode parameter:** `passed_amount_validation_key`
 		- **Default value:** [empty string]
-		- **Description:** This parameter holds the value of the "Passed Amount Validation Key" discussed in the Touchnet User's Guide. This value needs to be created (a unique alphanumeric string 30 characters or less) and entered in the "Passed Amount Validation Key" field in the uPay Site's Payment Settings page. Visit your uPay admin site to create your `passed_amount_validation_key` string.  
-
+		- **Description:** This parameter holds the value of the "Passed Amount Validation Key" discussed in the Touchnet User's Guide. Create your key (a unique alphanumeric string 30 characters or less) and enter it in the "Passed Amount Validation Key" field in the uPay Site's Payment Settings page.
 Here is an example use of the shortcode as used in a Forwarding Page:
 `[UPAYFORM upay_site_id="29" passed_amount_validation_key="gvawDFiwh43982Dd" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
-
 3. Publish the page and note its URL.
 
 ##3. Create the Gravity Form
 The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. That form will submit to the Forwarding Page, which will send the user (and the user's transaction info) to Touchnet. In this step, you'll create the form and point it at the Forwarding Page.
 
 1. Create the form. Gravity Forms makes this easy, and most Site Admins can create their own forms. Work with the Site Admin as necessary to implement a web form on secureforms for their ecommerce need.
-1. Configure the form to submit to the Forwarding Page. (**NOTE:** the Forwarding Page and the OIT plugin should live on secureforms.boisestate.edu).
+1. Configure the form to submit to the Forwarding Page. (**NOTE:** the Forwarding Page and the OIT Touchnet plugin should live on secureforms.boisestate.edu).
 	1. Open the Gravity Forms edit form page.
 	2. Click Form Settings->Confirmations->Edit.
 	3. Select Confirmation Type = Redirect.
