@@ -13,7 +13,7 @@ This procedure presumes that you have knowledge of WordPress, Gravity Forms, PHP
 
 #Procedure
 
-##1. Create a new version of the OIT Touchnet plugin.
+##1. Create a new version of the OIT Touchnet plugin
 Base your plugin on any existing OIT Touchnet plugin. (See [OITWPsupport @ GitHub](https://github.com/OITWPsupport).) You'll need to update some parts of the code to assure that this plugin is unique. (WordPress will throw an error if 2 plugins use the same class names or shortcodes, for example.)
 
 1. Copy the files into a new GitHub repository.
@@ -22,12 +22,12 @@ Base your plugin on any existing OIT Touchnet plugin. (See [OITWPsupport @ GitHu
 3. Update the plugin's main PHP file:
 	1. change this line to reference the new class name:  
 		`if( ! class_exists( 'Boise_State_[plugin_name]_Updater' ) ){`
-	1. change this line to reference Github repository you created:  
+	1. change this line to reference GitHub repository you created:  
 		`$updater->set_repository( 'boise-state-[plugin_name]' );`
 	1. change the shortcode so that it's unique:  
 		`add_shortcode('[shortcode_string]', 'createForm_[plugin_name]');`
-6. Push an initial commit of the code to Github.
-7. Create an initial release in Github.
+6. Push an initial commit of the code to GitHub.
+7. Create an initial release in GitHub.
 	
 See [Deploying Custom Plugins](https://sites.google.com/a/boisestate.edu/wordpress-support/home/boise-state-custom-plugins/deploying-custom-plugins)
 
@@ -53,21 +53,19 @@ Here is an example use of the shortcode as used in a Forwarding Page:
 
 3. Publish the page and note its URL.
 
-##3. Configure the Gravity Form
-The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. That form will submit to the Forwarding Page, which will send the user (and the user's transaction info) to Touchnet.
+##3. Create the Gravity Form
+The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. That form will submit to the Forwarding Page, which will send the user (and the user's transaction info) to Touchnet. In this step, you'll create the form and point it at the Forwarding Page.
 
-1. Create the form  
-Gravity Forms makes this easy, and most Site Admins can create their own forms. Work with the Site Admin as necessary to implement a web form on secureforms for their ecommerce need.
-1. Configure the form to submit to the Forwarding Page  
-	**NOTE:** the Forwarding Page (and the OIT plugin) should live on secureforms.boisestate.edu.
-	- Form Settings->Confirmations. 
-		- Confirmation Type = Redirect.
-		- Redirect URL = the URL of the Forwarding Page.
-		- Redirect Query String: Click the drop-down icon at the top right of this textarea to view the form fields available. By selecting fields here, 
-compose a query string in the format "key1={value1}&key2={value2}..." You'll provide the key names and the formatting (ampersands and equals sign).
-		- Save Confirmation.  
+1. Create the form. Gravity Forms makes this easy, and most Site Admins can create their own forms. Work with the Site Admin as necessary to implement a web form on secureforms for their ecommerce need.
+1. Configure the form to submit to the Forwarding Page. (**NOTE:** the Forwarding Page and the OIT plugin should live on secureforms.boisestate.edu).
+	1. Open the Gravity Forms edit form page.
+	2. Click Form Settings->Confirmations->Edit.
+	3. Select Confirmation Type = Redirect.
+	4. Enter as the Redirect URL the URL of the Forwarding Page you created above.
+	5. Redirect Query String: Click the drop-down icon at the top right of this textarea to view the form fields available. By selecting fields here, compose a query string in the format "key1={value1}&key2={value2}..." You'll provide the key names and the formatting (ampersands and equals sign). Make sure your key names match the relevant variable names in your plugin's main PHP file. (This is probably how you'll calculate the amount due before posting to Touchnet.)
+	6. Click the `Save Confirmation` button.  
 
-##4. Configuring and Testing
-1. Download the zip file and install on test.boisestate.edu to complete your testing.
+##4. Configure and test the plugin
+1. Download the zip file of your initial release from GitHub and install on test.boisestate.edu to complete your testing.
+2. Increment the version and create a new release on GitHub to test the test site's ability to automatically detect an available update.
 1. Download the zip file and install it on secureforms. Activate it on the appropriate secureforms subsite for production.
-	1. Increment the version and create a new release on Github to test the production site's ability to automatically detect an available update.
