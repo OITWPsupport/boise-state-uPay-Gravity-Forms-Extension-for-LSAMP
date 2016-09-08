@@ -2,7 +2,7 @@
 /*
 Plugin Name: Boise State uPay Gravity Forms Extension for LSAMP
 Description: Provides functions for use in uPay implementation for LSAMP.
-Version: 2.0.8
+Version: 2.0.9
 Author: David Lentz, David Ferro
 */
 
@@ -19,6 +19,7 @@ $updater->initialize();
 
 // Declare this here so it's accessible as a global:
 $EXT_TRANS_ID = -1;
+createEXT_TRANS_ID();
 
 	// This is triggered when the shortcode 'UPAYFORM' is added to a page in WordPress.
 	// Writes a form full of hidden fields and auto-submits it (via javascript).
