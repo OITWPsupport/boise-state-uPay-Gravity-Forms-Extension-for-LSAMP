@@ -2,7 +2,7 @@
 /*
 Plugin Name: Boise State uPay Gravity Forms Extension for LSAMP
 Description: Provides functions for use in uPay implementation for LSAMP.
-Version: 2.0.14
+Version: 2.0.15
 Author: David Lentz, David Ferro
 */
 
@@ -49,13 +49,13 @@ $EXT_TRANS_ID = date('mdHis') . mt_rand();
 		}
 
 //		global $EXT_TRANS_ID;
-//		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
-		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $GLOBALS['EXT_TRANS_ID'], $amt );
+		$EXT_TRANS_ID = $_SERVER['REQUEST_TIME_FLOAT'];
+		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
+
 
 		$formString = '<form id="upay" name="upay" action="' . $attributes[ 'upay_url' ] . '" method="post">';
 		$formString .= '<input type="hidden" name="UPAY_SITE_ID" VALUE="' . $attributes[ 'upay_site_id' ] . '" />';
-		// $formString .= '<input type="hidden" name="EXT_TRANS_ID" VALUE="'. $EXT_TRANS_ID .'" />';
-		$formString .= '<input type="hidden" name="EXT_TRANS_ID" VALUE="'. $GLOBALS['EXT_TRANS_ID'] .'" />';
+		$formString .= '<input type="hidden" name="EXT_TRANS_ID" VALUE="'. $EXT_TRANS_ID .'" />';
 		$formString .= '<input type="hidden" name="AMT" VALUE="'. $amt .'" />';
 		$formString .= '<input type="hidden" name="VALIDATION_KEY" VALUE="'. $VALIDATION_KEY .'" />';
 		$formString .= '<input type="submit" value="Click here to continue" />';
@@ -91,9 +91,7 @@ $EXT_TRANS_ID = date('mdHis') . mt_rand();
 	// in the EXT_TRANS_ID hidden field we submit to uPay. uPay will post this back upon 
 	// successful payment so we can update the record on our side to show as PAID.
 	function bsu_populate_transid() {
-//		global $EXT_TRANS_ID;
-//		return $EXT_TRANS_ID;
-		return $GLOBALS['EXT_TRANS_ID'];
+		return $_SERVER['REQUEST_TIME_FLOAT'];
 	}
 
 	// This hook is how we get the value created in createEXT_TRANS_ID into the "transid" 
