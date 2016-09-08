@@ -2,7 +2,7 @@
 /*
 Plugin Name: Boise State uPay Gravity Forms Extension for LSAMP
 Description: Provides functions for use in uPay implementation for LSAMP.
-Version: 2.0.6
+Version: 2.0.7
 Author: David Lentz, David Ferro
 */
 
@@ -49,7 +49,8 @@ $EXT_TRANS_ID = -1;
 
 //		$EXT_TRANS_ID = createEXT_TRANS_ID();
 		createEXT_TRANS_ID();
-
+		global $EXT_TRANS_ID;
+		
 		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
 
 		$formString = '<form id="upay" name="upay" action="' . $attributes[ 'upay_url' ] . '" method="post">';
@@ -63,7 +64,7 @@ $EXT_TRANS_ID = -1;
 		
 		// Form will auto-submit. User should never see it, but will be forwarded to upay 
 		// with all the data they've already posted.
-//		$formString .= '<script type="text/javascript">document.forms["upay"].submit();</script>';
+		$formString .= '<script type="text/javascript">document.forms["upay"].submit();</script>';
 		
 		echo $formString;
 
