@@ -1,7 +1,7 @@
 === Boise State uPay Gravity Forms Extension for LSAMP ===
 Contributors: David Lentz, David Ferro
 Requires at least: 4.4.2
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 Tested up to: 4.5.3
 
 Provides functions for use in uPay implementation for LSAMP.
