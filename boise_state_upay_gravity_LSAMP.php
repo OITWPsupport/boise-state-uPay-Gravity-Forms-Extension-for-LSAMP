@@ -2,7 +2,7 @@
 /*
 Plugin Name: Boise State uPay Gravity Forms Extension for LSAMP
 Description: Provides functions for use in uPay implementation for LSAMP.
-Version: 2.0.12
+Version: 2.0.13
 Author: David Lentz, David Ferro
 */
 
@@ -18,7 +18,7 @@ $updater->set_repository( 'boise-state-uPay-Gravity-Forms-Extension-for-LSAMP' )
 $updater->initialize();
 
 // Declare this here so it's accessible as a global:
-$EXT_TRANS_ID = -1;
+$EXT_TRANS_ID = date('mdHis') . mt_rand();
 
 
 	// This is triggered when the shortcode 'UPAYFORM' is added to a page in WordPress.
@@ -48,7 +48,6 @@ $EXT_TRANS_ID = -1;
 			$amt += 20;
 		}
 
-		createEXT_TRANS_ID();
 		global $EXT_TRANS_ID;
 
 		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
@@ -90,8 +89,9 @@ $EXT_TRANS_ID = -1;
 	// Populates hidden field in the GravityForm. This'll be the same value as we populate
 	// in the EXT_TRANS_ID hidden field we submit to uPay. uPay will post this back upon 
 	// successful payment so we can update the record on our side to show as PAID.
-	function bsu_populate_transid(){
-		return createEXT_TRANS_ID ();
+	function bsu_populate_transid() {
+		global $EXT_TRANS_ID;
+		return $EXT_TRANS_ID;
 	}
 
 	// This hook is how we get the value created in createEXT_TRANS_ID into the "transid" 
