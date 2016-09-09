@@ -63,6 +63,11 @@ $EXT_TRANS_ID = date('mdHis') . mt_rand();
 		$formString .= '</form>';
 		$formString .= 'One moment please...';
 		
+		
+		print "<PRE>";
+		print_r($_REQUEST);
+		print "</PRE>";
+		
 		// Form will auto-submit. User should never see it, but will be forwarded to upay 
 		// with all the data they've already posted.
 //		$formString .= '<script type="text/javascript">document.forms["upay"].submit();</script>';
