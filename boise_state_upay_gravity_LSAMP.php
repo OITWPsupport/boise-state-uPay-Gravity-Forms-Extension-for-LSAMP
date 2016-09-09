@@ -2,7 +2,7 @@
 /*
 Plugin Name: Boise State uPay Gravity Forms Extension for LSAMP
 Description: Provides functions for use in uPay implementation for LSAMP.
-Version: 2.0.20
+Version: 2.0.21
 Author: David Lentz, David Ferro
 */
 
@@ -16,10 +16,6 @@ $updater = new Boise_State_uPay_GF_LSAMP_Updater( __FILE__ );
 $updater->set_username( 'OITWPsupport' );
 $updater->set_repository( 'boise-state-uPay-Gravity-Forms-Extension-for-LSAMP' );
 $updater->initialize();
-
-// Declare this here so it's accessible as a global:
-$EXT_TRANS_ID = date('mdHis') . mt_rand();
-
 
 	// This is triggered when the shortcode 'UPAYFORM' is added to a page in WordPress.
 	// Writes a form full of hidden fields and auto-submits it (via javascript).
@@ -48,16 +44,10 @@ $EXT_TRANS_ID = date('mdHis') . mt_rand();
 			$amt += 20;
 		}
 
-//		global $EXT_TRANS_ID;
-		// $EXT_TRANS_ID = $_SERVER['REQUEST_TIME_FLOAT'];
-		// $EXT_TRANS_ID = session_id();
-		// $VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
 		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $_REQUEST['TRANSID'], $amt );
-
 
 		$formString = '<form id="upay" name="upay" action="' . $attributes[ 'upay_url' ] . '" method="post">';
 		$formString .= '<input type="hidden" name="UPAY_SITE_ID" VALUE="' . $attributes[ 'upay_site_id' ] . '" />';
-		// $formString .= '<input type="hidden" name="EXT_TRANS_ID" VALUE="'. $EXT_TRANS_ID .'" />';
 		$formString .= '<input type="hidden" name="EXT_TRANS_ID" VALUE="'. $_REQUEST['TRANSID'] .'" />';
 		$formString .= '<input type="hidden" name="AMT" VALUE="'. $amt .'" />';
 		$formString .= '<input type="hidden" name="VALIDATION_KEY" VALUE="'. $VALIDATION_KEY .'" />';
@@ -82,28 +72,14 @@ $EXT_TRANS_ID = date('mdHis') . mt_rand();
 	// the form defined in createForm_LSAMP() appears there.
 	add_shortcode('UPAYFORM', 'createForm_LSAMP');
 
-	// Creates a transaction ID for use by upay. We'll store this value on our side AND 
-	// post it to uPay.
-	function createEXT_TRANS_ID() {
-		// This value is not guaranteed to be unique, but is very very unlikely to be 
-		// duplicated:
-		global $EXT_TRANS_ID;
-		if ( $EXT_TRANS_ID == -1 ) {
-			return date('mdHis') . mt_rand();
-		} else {
-			return $EXT_TRANS_ID;
-		}
-	}
-	
 	// Populates hidden field in the GravityForm. This'll be the same value as we populate
-	// in the EXT_TRANS_ID hidden field we submit to uPay. uPay will post this back upon 
-	// successful payment so we can update the record on our side to show as PAID.
+	// in the EXT_TRANS_ID hidden field we submit to uPay.
 	function bsu_populate_transid() {
 		$EXT_TRANS_ID = date('mdHis') . mt_rand();
 		return $EXT_TRANS_ID;
 	}
 
-	// This hook is how we get the value created in createEXT_TRANS_ID into the "transid" 
+	// This hook is how we get the EXT_TRANS_ID value into the "transid" 
 	// field of the gravity form. (Note the string pattern gform_field_value_FIELDNAME.)
 	// See https://www.gravityhelp.com/documentation/article/allow-field-to-be-populated-dynamically/
 	add_filter('gform_field_value_transid', 'bsu_populate_transid');
