@@ -2,7 +2,7 @@
 /*
 Plugin Name: Boise State uPay Gravity Forms Extension for LSAMP
 Description: Provides functions for use in uPay implementation for LSAMP.
-Version: 2.0.19
+Version: 2.0.20
 Author: David Lentz, David Ferro
 */
 
@@ -50,8 +50,9 @@ $EXT_TRANS_ID = date('mdHis') . mt_rand();
 
 //		global $EXT_TRANS_ID;
 		// $EXT_TRANS_ID = $_SERVER['REQUEST_TIME_FLOAT'];
-		$EXT_TRANS_ID = session_id();
-		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
+		// $EXT_TRANS_ID = session_id();
+		// $VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $EXT_TRANS_ID, $amt );
+		$VALIDATION_KEY = createValidationKey( $attributes[ 'passed_amount_validation_key' ], $_REQUEST['TRANSID'], $amt );
 
 
 		$formString = '<form id="upay" name="upay" action="' . $attributes[ 'upay_url' ] . '" method="post">';
