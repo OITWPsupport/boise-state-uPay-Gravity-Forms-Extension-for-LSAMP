@@ -1,8 +1,8 @@
 1. Prerequisites
  - Site ID. You'll need to know the site ID of your uPay site.
  - uPay URL. This is constant, but make sure you confirm that the URL you use in the upay_url value in the shortcode is accurate.
- - Visit your uPay admin site to create your passed_amount_validation_key string.
- - Plugin installed. Each item or event for which uPay is used to collect payment will have its own version of this plugin. The WP Support team will need to customize the plugin and install it on your secureforms subsite.
+ - Visit your uPay admin site to create your passed\_amount\_validation\_key string.
+ - Plugin installed. Each item or event for which uPay is used to collect payment will have its own version of this plugin. The WP Support team will need to customize the plugin and install it on your secureforms subsite. If you need to have your plugin created or modified, [contact WP Support](https://webguide.boisestate.edu/contact/).
 1. Create your forwarding page
   - this is where you use the shortcode
   - Create a new page in your secureforms subsite and add the shortcode provided to you by WP Support. This page will serve as your confirmation page for the secureform you'll create in the next step, so note the URL. When users land here after submitting your form, they'll be immediately and automatically forwarded to your uPay site.
@@ -16,4 +16,5 @@
 1. Test
  - WP Support will require help from you to confirm that the plugin and forms are working properly.
 1. Unanswered
-  - Posting back the payment result + EXT_TRANS_ID
+  - Posting back the payment result + EXT\_TRANS\_ID. **Actually** there won't be a postback. This app and the uPay store will both record the transaction ID, and 
+  they can be visually compared for confirmation. This is consistent with what users are doing as of September 2016 (per Coleen Dudley, Health Sciences).
