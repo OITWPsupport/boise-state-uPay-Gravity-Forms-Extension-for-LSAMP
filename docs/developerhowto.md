@@ -4,6 +4,8 @@ Touchnet uPay is the service designated by the university for ecommerce. Any Wor
 
 GravityForms is the product OIT provides to all site admins to easily create web forms. These forms live in subsites on secureforms.boisestate.edu. To allow university departments to implement ecommerce in their WordPress sites, we combine WordPress, Gravity Forms and OIT's Touchnet plugin.
 
+Throughout the process described here, you'll need to communicate with the Site Administrator requesting the plugin. They will be able to provide requirements for the application, and information specific to their uPay site.
+
 #Purpose
 
 This document describes the process for creating an ecommerce application based on WordPress, Gravity Forms and OIT's Touchnet plugin template.
@@ -47,24 +49,26 @@ The Forwarding Page will use the plugin you created above to send the user and t
 	- Passed Amount Validation Key
 		- **Shortcode parameter:** `passed_amount_validation_key`
 		- **Default value:** [empty string]
-		- **Description:** This parameter holds the value of the "Passed Amount Validation Key" discussed in the Touchnet User's Guide. Create your key (a unique alphanumeric string 30 characters or less) and enter it in the "Passed Amount Validation Key" field in the uPay Site's Payment Settings page.
+		- **Description:** This parameter holds the value of the "Passed Amount Validation Key" discussed in the Touchnet User's Guide. Create your key (a unique alphanumeric string 30 characters or less) and enter it in the "Passed Amount Validation Key" field in the uPay Site's Payment Settings page.  
+  
 Here is an example use of the shortcode as used in a Forwarding Page:
 `[UPAYFORM upay_site_id="29" passed_amount_validation_key="gvawDFiwh43982Dd" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
 3. Publish the page and note its URL.
 
 ##3. Create the Gravity Form
-The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. That form will submit to the Forwarding Page, which will send the user (and the user's transaction info) to Touchnet. In this step, you'll create the form and point it at the Forwarding Page.
+The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. That form will submit to the Forwarding Page, which will send the user (and the user's transaction info) to Touchnet. In this step, you'll create the form and point it at the Forwarding Page. **The Gravity Form must not include fields for payment information.** Users will enter payment information only after they arrive at Touchnet.
 
 1. Create the form. Gravity Forms makes this easy, and most Site Admins can create their own forms. Work with the Site Admin as necessary to implement a web form on secureforms for their ecommerce need.
-1. Configure the form to submit to the Forwarding Page. (**NOTE:** the Forwarding Page and the OIT Touchnet plugin should live on secureforms.boisestate.edu).
+1. Configure the form to submit to the Forwarding Page. (**Note:** the Forwarding Page and the OIT Touchnet plugin should live on secureforms.boisestate.edu).
 	1. Open the Gravity Forms edit form page.
 	2. Click Form Settings->Confirmations->Edit.
 	3. Select Confirmation Type = Redirect.
-	4. Enter as the Redirect URL the URL of the Forwarding Page you created above.
-	5. Redirect Query String: Click the drop-down icon at the top right of this textarea to view the form fields available. By selecting fields here, compose a query string in the format "key1={value1}&key2={value2}..." You'll provide the key names and the formatting (ampersands and equals sign). Make sure your key names match the relevant variable names in your plugin's main PHP file. (This is probably how you'll calculate the amount due before posting to Touchnet.)
+	4. In the Redirect URL field, add the URL the Forwarding Page.
+	5. Create a Redirect Query String. Click the drop-down icon at the top right of the textarea to view the form fields available. By selecting fields here, compose a query string in the format "key1={value1}&key2={value2}..." You'll provide the key names and the formatting (ampersands and equals sign). Make sure your key names match the relevant variable names in your plugin's main PHP file. (The query string parameters you designate here will be available to the plugin's main PHP file. This is is probably how you'll calculate the amount due before posting to Touchnet.)
 	6. Click the `Save Confirmation` button.  
 
 ##4. Configure and test the plugin
 1. Download the zip file of your initial release from GitHub and install on test.boisestate.edu to complete your testing.
 2. Increment the version and create a new release on GitHub to test the test site's ability to automatically detect an available update.
-1. Download the zip file and install it on secureforms. Activate it on the appropriate secureforms subsite for production.
+1. Download the zip file and install it on secureforms. Activate it on the appropriate secureforms subsite for testing.
+2. Work with the Site Admin to configure their secureform and Forwarding Page to submit test transactions to a uPay test site, and verify the results.
