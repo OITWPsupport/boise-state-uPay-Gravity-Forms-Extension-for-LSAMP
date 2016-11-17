@@ -53,10 +53,9 @@ The Forwarding Page will use the plugin you created above to send the user and t
 		- **Default value:** [empty string]
 		- **Description:** This parameter holds the value of the "Passed Amount Validation Key" discussed in the Touchnet User's Guide. Create your key (a unique alphanumeric string 30 characters or less) and enter it in the "Passed Amount Validation Key" field in the uPay Site's Payment Settings page.  
   
-Here is an example use of the shortcode as used in a Forwarding Page:
-`[UPAYFORM upay_site_id="29" passed_amount_validation_key="gvawDFiwh43982Dd" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
+Here is an example use of the shortcode as used in a Forwarding Page: `[UPAYFORM upay_site_id="29" passed_amount_validation_key="gvawDFiwh43982Dd" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
 
-3. Publish the page and note its URL.
+Publish the page and note its URL.
 
 ###3. Create the Gravity Form
 The user will begin the ecommerce transaction on a web form on the department's secureforms subsite. That form will submit to the Forwarding Page, which will send the user (and the user's transaction info) to Touchnet. In this step, you'll create the form and point it at the Forwarding Page. **The Gravity Form must not include fields for payment information.** Users will enter payment information only after they arrive at Touchnet.
