@@ -55,6 +55,7 @@ The Forwarding Page will use the plugin you created above to send the user and t
   
 Here is an example use of the shortcode as used in a Forwarding Page:
 `[UPAYFORM upay_site_id="29" passed_amount_validation_key="gvawDFiwh43982Dd" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
+
 3. Publish the page and note its URL.
 
 ###3. Create the Gravity Form
