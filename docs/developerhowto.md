@@ -53,7 +53,7 @@ The Forwarding Page will use the plugin you created above to send the user and t
 		- **Default value:** [empty string]
 		- **Description:** This parameter holds the value of the "Passed Amount Validation Key" discussed in the Touchnet User's Guide. Create your key (a unique alphanumeric string 30 characters or less) and enter it in the "Passed Amount Validation Key" field in the uPay Site's Payment Settings page.  
   
-Here is an example use of the shortcode as used in a Forwarding Page: `[UPAYFORM upay_site_id="29" passed_amount_validation_key="gvawDFiwh43982Dd" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
+Here is an example use of the shortcode as used in a Forwarding Page: `[UPAYFORM upay_site_id="129" passed_amount_validation_key="gvawCFiwh43982Cc" upay_url="https://secure.touchnet.com/C20444_upay/web/index.jsp"]`
 
 Publish the page and note its URL.
 
