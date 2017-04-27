@@ -1,21 +1,21 @@
-#Overview
+# Overview
 Touchnet uPay is the service designated by the university for ecommerce. If your WordPress site requires ecommerce functionality, it needs to be integrated with Touchnet. 
 
 GravityForms is the product that allows WordPress Site Admins to easily create web forms. These forms live in subsites on secureforms.boisestate.edu.  
 
 OIT's WP Support team is available to work with you to create a custom WordPress plugin that will combine WordPress, Gravity Forms and Touchnet to create an ecommerce application.
 
-#Purpose
+# Purpose
 This document describes the process of having an ecommerce application created for your WordPress site. It lists the steps in the process and the communication and information you'll need to work with WP Support to create and launch this application.
 
-#Prerequisites
+# Prerequisites
 There are a few pieces of information you'll need in order to get the process started:
 
  - Site ID. You'll need to know the site ID of your uPay site.
  - uPay URL. Make sure you know the URL to your uPay site.
  - Visit your uPay admin site to create your passed\_amount\_validation\_key string.
 
-#Procedures
+# Procedures
 This section describes what you'll need to do to get your e-commerce application up and running, including working with the WP Support team to get a custom plugin created.
 
 ##1. **Contact WP Support.**  
