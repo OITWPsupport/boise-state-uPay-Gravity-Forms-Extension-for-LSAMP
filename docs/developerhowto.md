@@ -34,7 +34,7 @@ Base your plugin on any existing OIT Touchnet plugin. (See [OITWPsupport @ GitHu
 6. Push an initial commit of the code to GitHub.
 7. Create an initial release in GitHub.
 	
-See [Deploying Custom Plugins](https://sites.google.com/a/boisestate.edu/wordpress-support/home/boise-state-custom-plugins/deploying-custom-plugins)
+See [Deploying Custom Plugins](https://sites.google.com/a/boisestate.edu/wordpress-support/plugins/boise-state-custom-plugins/deploying-custom-plugins)
 
 
 ### 2. Create a Forwarding Page
