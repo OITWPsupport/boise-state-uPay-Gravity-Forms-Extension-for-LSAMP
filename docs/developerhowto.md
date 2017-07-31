@@ -18,7 +18,7 @@ This procedure presumes that you have knowledge of WordPress, Gravity Forms, PHP
 ## Procedure
 
 ### 1. Create a new version of the OIT Touchnet plugin
-Base your plugin on any existing OIT Touchnet plugin. (See [OITWPsupport @ GitHub](https://github.com/OITWPsupport).) You'll need to update some parts of the code to assure that this plugin is unique. (WordPress will throw an error if 2 plugins use the same class names or shortcodes, for example.)
+Base your plugin on any existing OIT Touchnet plugin. (Here(https://github.com/OITWPsupport/boise-state-uPay-Gravity-Forms-Extension-for-LSAMP) is an example.) You'll need to update some parts of the code to assure that this plugin is unique. (WordPress will throw an error if 2 plugins use the same class names or shortcodes, for example.)
 
 1. Download the source code of an OIT Touchnet plugin from [OITWPsupport @ GitHub](https://github.com/OITWPsupport)
 1. Copy the files into a new GitHub repository.
