@@ -2,7 +2,7 @@
 
 ## Overview
 
-Touchnet uPay is the service designated by the university for ecommerce. Any WordPress sites that require ecommerce needs to integrate with Touchnet. OIT has created a plugin template so that each site requiring ecommerce can use a custom-built plugin configured and supported by OIT.
+Touchnet uPay is the service designated by the university for ecommerce. Any WordPress sites that require ecommerce need to integrate with Touchnet. OIT has created a plugin template so that each site requiring ecommerce can use a custom-built plugin configured and supported by OIT.
 
 GravityForms is the product OIT provides to all site admins to easily create web forms. These forms live in subsites on secureforms.boisestate.edu. To allow university departments to implement ecommerce in their WordPress sites, we combine WordPress, Gravity Forms and OIT's Touchnet plugin.
 
